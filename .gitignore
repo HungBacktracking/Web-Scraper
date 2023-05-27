@@ -1,0 +1,5 @@
+/scraper/config.py
+/website/config.py
+__pycache__
+.vercel
+config.py

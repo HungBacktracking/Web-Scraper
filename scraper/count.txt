@@ -1,0 +1,25 @@
+fpt: 2070s
+- laptop: 222 (trên web) - 222 (cào) - 222 (vào database)
+- pc: 58 - 58 - 58. Một số pc có disk storage 4GB, 8GB,...
+- screen: 44 - 44 - 44
+- mouse: 49 - 49 - 49
+- Keyboard: 25 - 25 - 25
+
+tpr:
+- laptop: 150 - 150 - 150       402s
+- mouse: 21 - 21 - 21           6s
+- keyboard: 71 - 71 - 71        7s
+
+pvu:
+- laptop: 808 - 805 - 805       2472s
+- pc: 327 - 327 - 327           532s
+- screen: 431 - 431 - 431       1129s
+- mouse: 228 - 228 - 212        19s      
+- keyboard: 226 - 226 - 207     30s
+
+tgd:
+- laptop: 217 - 216 - 216
+- pc: 28 - 28 - 28
+- screen: 27 - 27 - 27      
+- mouse: 75 - 75 -75            
+- keyboard: 20 - 20 - 20     

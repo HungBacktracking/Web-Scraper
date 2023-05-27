@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html class="h-full" lang = "vi">
+<head>
+	<title>Thegioilaptop.com</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="google-site-verification" content="dwAWHPV2oiMKwyTqPvLRNYeA8nnHq9kfsZveBG4oucw" />
+	<meta name="description" content="Gợi ý, so sánh mặt hàng máy tính tốt nhất của các trang thương mại điện tử.">
+	<link rel="apple-touch-icon" sizes="180x180" href="../static/apple-touch-icon.png">
+	<link rel="icon" type="image/png" sizes="32x32" href="../static/favicon-32x32.png">
+	<link rel="icon" type="image/png" sizes="16x16" href="../static/favicon-16x16.png">
+	<link rel="manifest" href="../static/site.webmanifest">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+	<link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css'>
+	<link href="../static/style.css" rel="stylesheet">
+	<link href="../static/mobile.css" rel="stylesheet"> 
+</head>
+
+<body class="h-full">
+	<nav class="bg-white z-20" style = "margin-bottom: 2px; display: flex; align-items: center; overflow-x: scroll;">
+		<h1 class="p-5 text-lg font-bold bg-gradient-to-r inline-block from-green-500 to-blue-500 bg-clip-text text-transparent">
+			Thegioilaptop.com
+		</h1>
+
+		<form method="post" action="/search">
+			<div class="the-input-search ml-6">
+				<div class="t-popper" style="margin:-12px; margin-right: 12px;">
+					<div class="t-popper__trigger">
+						<div class="t-text-field__wrapper t-text-field---lg">
+							<span class="t-text-field__prefix"><i class="t-text-field__prefix-icon i-ui-search"></i></span> 
+							<input enterkeyhint="search" required name="search" inputmode="search" placeholder="Cùng tìm sản phẩm hoàn hảo" autocomplete="off" type="text" value="" class="t-text-field">  
+							<span class="t-text-field__suffix"><i class="t-text-field__clearable" style="display:none;"></i> <!----></span>
+						</div>
+					</div> 
+				</div>
+			</div>
+		</form>
+	</nav>
+
+	<div class="header__main">
+        <div>
+			<ul class="main-menu">
+				<li class="active">
+					<a href="/Laptop">
+						<i class="fa-solid fa-laptop fa-xl"></i>
+						<span class="">Laptop</span>
+					</a>
+				</li>
+				<li class="">
+					<a href="/PC">
+						<i class="fas fa-computer fa-xl"></i>									
+						<span class="">Máy tính để bàn</span>
+					</a>
+				</li>
+				<li class="">
+					<a href="/Screen">
+						<i class="bi bi-pc-display-horizontal"></i>
+						<span class="">Màn hình</span>
+					</a>
+				</li>
+				<li class="">
+					<a href="/Keyboard">
+						<i class="fa-solid fa-keyboard fa-xl"></i>
+						<span class="">Bàn phím</span>
+					</a>
+				</li>
+				<li class="">
+					<a href="/Mouse">
+						<i class="fa-solid fa-computer-mouse fa-xl"></i>
+						<span class="">Chuột máy tính</span>
+					</a>
+				</li>
+			</ul>
+        </div>
+    </div>
+	
+	<div class="p-10" id="feature1">
+		<div class="container">
+			<div class="rounded-xl overflow-hidden p-6 bg-base">
+				<h1 class="text-h3">
+					Kết quả tìm kiếm cho <span class="name-key font-semibold italic">{{ name }}</span>
+				</h1> 
+				<p class="count mt-2 text-md"></p>
+			</div>
+		</div>
+
+		{% block main %}
+		{% endblock %}	
+	</div>
+
+	<div id="loading-overlay">
+		<div class="loading-spinner"></div>
+		<p>Loading...</p>
+	</div>
+</body>
+</html>

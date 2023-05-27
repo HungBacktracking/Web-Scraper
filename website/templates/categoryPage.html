@@ -1,0 +1,60 @@
+{% extends 'index.html' %}
+
+{% block main %}
+<form method="post" id="form" data-active="true">
+    <div class = "section-filter mt-4">
+        <div class = "box-filter container">
+            <div class="sort-select">
+                {% if product_info %}
+                    {{ product_info["sort"] | safe }}
+                {% endif %}
+            </div>
+            <div class="filter">
+                {% if parameters %}
+                    {% for parameter in parameters %}
+                        <div class="filter-parameter">
+                            <div class="one" style="opacity: 1;">
+                                <div class="filter-parameter-name" value = "{{ parameter['name'] }}">
+                                    <span class = "filterText" value = "{{ parameter['name']}}">{{ parameter["name"] }}</span> <i class="fa-solid fa-angle-down fa-fade"></i>
+                                    <div class="arrow-filter hidden" style="inset: 0px auto auto 0px; transform: translate3d(180px, 10px, 0px) rotate(45deg);"></div>
+                                </div>
+                                
+                                <div class="filter-value-box hidden" style="inset: 0px auto auto 0px; transform: translate3d(180px, 71.333px, 0px);">
+                                    <div class = "filter-value-list">
+                                        {% for value in parameter["values"] %}
+                                            <div class="filter-value" value = "{{ value }}">{{ value}}</div>
+                                        {% endfor %}
+                                    </div>
+                                    <div class="filter-button hidden">
+                                        <div class="filter-close">Xóa bộ lọc</div>
+                                        <div class="submit">Xem <b class="product-search-number"></b> kết quả</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                {% endif %}
+            </div>
+        </div>
+    </div>
+
+    <div class="grid grid-cols-10 gap-10 items-start  place-content-evenly">
+        <div class="col-span-10 md:col-span-10 bg-white rounded-xl p-5" id = "product" style="background-color: #f6f9fc;">
+            <ul class = "listproduct">
+                {% if product_info %}
+                    {{ product_info["listproduct"] | safe }}
+                {% endif %}
+            </ul>
+            <div class = "pagination">
+                {% if product_info %}
+                    {{ product_info["pagination"] | safe }}
+                {% endif %}
+            </div>
+
+        </div>
+    </div>
+</form>
+
+<script src="../static/script.js"></script>
+
+{% endblock %}

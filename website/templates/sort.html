@@ -1,0 +1,9 @@
+<div id = "sortSelect" onclick = "openSort()">
+    <p class = "click-sort">Xếp theo: <span class="sort-show">{% if sort.current_sort %} {{ sort.sortList[sort.current_sort]  }} {% else %} Nổi bật nhất {% endif %}</span><i class="fa-solid fa-angle-down fa-fade"></i></p>
+</div>
+<div class="arrow-filter hidden" style="inset: 0px auto auto 0px; transform: translate3d(50px, 67px, 0px) rotate(45deg);"></div>
+<div class="sort-select-main sort hidden" id = "sortBlock" style="inset: 0px auto auto 0px; transform: translate3d(20px, 71.333px, 0px);">
+    <p><a href = "/{{sort.table_name}}?page=1&sort=1" type = "submit" id = "sortButton" class="{{'check' if not sort.current_sort or (sort.current_sort and sort.current_sort == 1) else ''}}" name="sort-default" value = '1'><i></i>Nổi bật nhất</a></p>
+    <p><a href = "/{{sort.table_name}}?page=1&sort=2" type = "submit" id = "sortButton" class="{{'check' if sort.current_sort and sort.current_sort == 2 else ''}}" name="sort-desc" value = '2'><i></i>Giá cao đến thấp</a></p>
+    <p><a href = "/{{sort.table_name}}?page=1&sort=3" type = "submit" id = "sortButton" class="{{'check' if sort.current_sort and sort.current_sort == 3 else ''}}" name="sort-asc" value = '3'><i></i>Giá thấp đến cao</a></p>
+</div> 

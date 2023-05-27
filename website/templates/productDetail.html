@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html class="h-full" lang = "vi">
+<head>
+	<title>Thegioilaptop.com</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="google-site-verification" content="dwAWHPV2oiMKwyTqPvLRNYeA8nnHq9kfsZveBG4oucw" />
+	<meta name="description" content="Gợi ý, so sánh mặt hàng máy tính tốt nhất của các trang thương mại điện tử.">
+	<link rel="apple-touch-icon" sizes="180x180" href="../static/apple-touch-icon.png">
+	<link rel="icon" type="image/png" sizes="32x32" href="../static/favicon-32x32.png">
+	<link rel="icon" type="image/png" sizes="16x16" href="../static/favicon-16x16.png">
+	<link rel="manifest" href="../static/site.webmanifest">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+	<link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css'>
+	<link href="{{ css_url_index }}" rel="stylesheet">
+  	<link href="{{ css_url_product }}" rel="stylesheet">
+	<link href="{{ css_url_mobile }}" rel="stylesheet">
+</head>
+
+<body class="h-full">
+	<nav class="bg-white z-20" style = "margin-bottom: 2px; display: flex; align-items: center; overflow-x: scroll;">
+		<h1 class="p-5 text-lg font-bold bg-gradient-to-r inline-block from-green-500 to-blue-500 bg-clip-text text-transparent">
+			Thegioilaptop.com
+		</h1>
+		<form method="post" action="/search">
+			<div class="the-input-search ml-6">
+				<div class="t-popper" style="margin:-12px;">
+					<div class="t-popper__trigger">
+						<div class="t-text-field__wrapper t-text-field---lg">
+							<span class="t-text-field__prefix"><i class="t-text-field__prefix-icon i-ui-search"></i></span> 
+							<input enterkeyhint="search" required name="search" inputmode="search" placeholder="Cùng tìm sản phẩm hoàn hảo" autocomplete="off" type="text" value="" class="t-text-field">  
+							<span class="t-text-field__suffix"><i class="t-text-field__clearable" style="display:none;"></i> <!----></span>
+						</div>
+					</div> 
+				</div>
+			</div>
+		</form>
+	</nav>
+
+	<div class="header__main">
+        <div>
+			<ul class="main-menu">
+				<li class="active">
+					<a href="/Laptop">
+						<i class="fa-solid fa-laptop fa-xl"></i>
+						<span class="">Laptop</span>
+					</a>
+				</li>
+				<li class="">
+					<a href="/PC">
+						<i class="fas fa-computer fa-xl"></i>									
+						<span class="">Máy tính để bàn</span>
+					</a>
+				</li>
+				<li class="">
+					<a href="/Screen">
+						<i class="bi bi-pc-display-horizontal"></i>
+						<span class="">Màn hình</span>
+					</a>
+				</li>
+				<li class="">
+					<a href="/Keyboard">
+						<i class="fa-solid fa-keyboard fa-xl"></i>
+						<span class="">Bàn phím</span>
+					</a>
+				</li>
+				<li class="">
+					<a href="/Mouse">
+						<i class="fa-solid fa-computer-mouse fa-xl"></i>
+						<span class="">Chuột máy tính</span>
+					</a>
+				</li>
+			</ul>
+        </div>
+    </div>
+	
+	
+	<main class="page-sku bg-base-100">
+		<div class="container pb-10">
+			<ul itemscope="itemscope" itemtype="https://schema.org/BreadcrumbList" class="t-breadcrumb py-4">
+				<li itemprop="itemListElement" itemscope="itemscope" itemtype="https://schema.org/ListItem" class="t-breadcrumb__item"><!----> <a href="/" class="t-breadcrumb__label nuxt-link-active" itemprop="item"><span itemprop="name">Trang chủ</span> <meta content="1" itemprop="position"></a></li>
+				<li itemprop="itemListElement" itemscope="itemscope" itemtype="https://schema.org/ListItem" class="t-breadcrumb__item"><span>/</span> <a href="/{{ table_name }}" class="t-breadcrumb__label" itemprop="item"><span itemprop="name">{{ table_name }}</span> <meta content="2" itemprop="position"></a></li>
+			</ul>
+			<div class="relative flex">
+				<div class="sticky inset-0 h-full ml-6 overflow-visible w-2/5">
+					<div class="flex flex-col h-full space-y-4 overflow-auto">
+						<section class="section-information t-card">
+							<div class="divide-y divide-space-y-4">
+								<div class="flex flex-col">
+									<div class="flex items-center space-x-2 text-md">
+										<span>Shop: {{ SHOP[product['shop']] }}</span> 
+									</div>
+									<div class="mt-2">
+										<h1 class="text-h6 font-semibold" style="font-size: 17px;">{{ product['product_name'] }}</h1>
+									</div>
+								</div>
+								<div class="flex flex-col">
+									<div class="section-version">
+										<div class="flex flex-col space-y-3">
+											<div class="section-attribute-content mt-5 grid grid-cols-2 gap-4">
+												{% if product['cpu'] %}
+													<div>
+														<div class="text-md font-semibold text-base-content-300" style="font-size: 17px;">Vi xử lý</div>
+														<span style="font-size: 14px;">
+															Loại CPU: 
+															{% if product['cpu'] in ['i3', 'i5', 'i7', 'i9'] %}
+																Intel Core {{ product['cpu'] }}
+															{% elif product['cpu'] in ['R3', 'R5', 'R7', 'R9'] %}
+																AMD Ryzen {{ product['cpu'] }}
+															{% elif product['cpu'] in ['M1', 'M2'] %}
+																Apple {{ product['cpu'] }}
+															{% else %}
+																Intel {{ product['cpu'] }}
+															{% endif %}
+														</span>
+													</div>
+												{% endif %}
+												
+												{% if product['ram'] %}
+													<div>
+														<div class="text-md font-semibold text-base-content-300" style="font-size: 17px;">RAM</div>
+														<span style="font-size: 14px;">
+															Dung lượng: {{ product['ram'] }}GB
+														</span>
+													</div>
+												{% endif %}
+
+												{% if product['disk_storage'] %}
+													<div>
+														<div class="text-md font-semibold text-base-content-300" style="font-size: 17px;">Ổ cứng</div>
+														<span style="font-size: 14px;">
+															Dung lượng: {{ product['disk_storage'] }} {{ product['disk_type'] }}
+														</span>
+													</div>
+												{% endif %}
+
+												{% if product['screen'] %}
+													<div>
+														<div class="text-md font-semibold text-base-content-300" style="font-size: 17px;">Màn hình</div>
+														<span style="font-size: 14px;">
+															Kích thước: {{ product['screen'] }} inch
+														</span>
+													</div>
+												{% endif %}
+
+												{% if product['refresh_rate'] %}
+													<div>
+														<div class="text-md font-semibold text-base-content-300" style="font-size: 17px;">Tần số quét</div>
+														<span style="font-size: 14px;">
+															Chất lượng: {{ product['refresh_rate'] }} Hz
+														</span>
+													</div>
+												{% endif %}
+
+												{% if product['gpu'] %}
+													<div>
+														<div class="text-md font-semibold text-base-content-300" style="font-size: 17px;">Card đồ họa</div>
+														<span style="font-size: 14px;">
+															{{ product['gpu'] }}
+														</span>
+													</div>
+												{% endif %}
+
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="flex items-center justify-between space-x-8">
+									<div class="flex flex-col">
+										<span class="text-h4 text-secondary font-semibold">
+											{{ product['price'] }}
+										</span>
+									</div>
+									<div class="w-full grid grid-cols-1 desktop:grid-cols-2 gap-2">
+										{% set url = product['info_link'] %}
+										<button class="t-button flex-1 t-button--md t-button--solid t-button--secondary" onclick="window.open('{{ url }}', '_blank');"><!----> 
+											<span class="whitespace-nowrap">Đi đến cửa hàng</span> <!----> <!---->
+										</button>
+									</div>
+								</div>
+							</div>
+						</section>
+					</div>
+				</div>
+				
+				<div class="flex flex-col order-first space-y-4 w-3/5">
+					<section class="section-media t-card">
+						<div class="section-media__main">
+							<div class="!aspect-w-1 !aspect-h-1">
+								<div class="t-swiper swiper swiper-initialized swiper-horizontal swiper-pointer-events swiper-backface-hidden">
+									<div class="swiper-wrapper">
+										<div class="t-swiper-slide swiper-slide bg-base-100 aspect-w-1 aspect-h-1 rounded overflow-hidden swiper-slide-active" style="margin-right: 8px;">
+											<img alt="Dell Inspiron 16 5630" src="{{ product['img_link'] }}" class="t-img w-full h-full object-contain">
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</section>
+				</div>
+			</div>
+		</div>
+
+		<div class="container" style="padding-bottom: 35px;">
+			<div class="rounded-xl overflow-hidden p-6 bg-base" style="margin-bottom: 20px;">
+				<h1 class="text-h3">
+					Các sản phẩm {{ table_name }} tương tự
+				</h1> 
+				<p class="count mt-2 text-md">Tìm được {{ listproduct | length }} sản phẩm</p>
+			</div>
+		
+		
+			{% if listproduct | length != 0 %}
+				<ul class="listproduct">
+					{% for product in listproduct %}
+					<li class="item">  
+
+						<a href="{{ product['info_link'] }}" target="_blank"> <!-- href = "/{{ product['table_name']}}?id={{ product['id'] }}"  -->
+							<div class = "logo">
+								{% if product['shop'] == 'fpt' %}
+									<img src = "https://fptshop.com.vn/mua-laptop-den-fptshop/Content/images/logo-mb.png" alt = "logo" style = "height: 21px;">
+								{% elif product['shop'] == 'pvu' %}
+									<img src = "https://lh3.googleusercontent.com/qOnchEYD7No58bjEQs5pf_05IV-0DmoaCmEFXD007VHs5cn16LZ6PC98IlY3OiBL9UXsEwNzwiVHRrvSDMQ" alt = "logo" style = "height: 10px;">
+								{% elif product['shop'] == 'tpr' %}
+									<img src = "https://media-api-beta.thinkpro.vn/media/core/site-configs/2023/3/16/logo-thinkpro.svg" alt = "logo" style = "height: 21px;">
+								{% else %}
+									<img src = "https://cdn.haitrieu.com/wp-content/uploads/2021/11/Logo-The-Gioi-Di-Dong-MWG.png" alt = "logo" style = "height: 25px;">
+								{% endif %}
+							</div>
+							<div class = "effect">
+								<div class = "item-img">
+									<img src="{{ product['img_link'] }}" style = "transition: all 300ms ease-in-out;" alt = "product image">
+								</div>
+								<h3> {{ product['product_name'] }} </h3>
+								<div class = "product-price">
+									<span class = "product-price-text">Từ</span>
+									<div class = "price"> {{ product['price'] }} </div>
+								</div>
+
+								<div class = "product-config">
+									<div class = "product-config-param">
+										{% if product['screen'] %}
+											<span data-title = "Màn hình">
+												<i class="bi bi-aspect-ratio fa-xs" style="color: #45474a"></i>
+												{{ product['screen'] }} inch
+											</span>
+										{% endif %}
+
+										{% if product['refresh_rate'] %}
+											<span data-title = "Tần số quét">
+												<i class="bi bi-display fa-xs" style="color: #45474a;"></i>
+												{{ product['refresh_rate'] }} Hz
+											</span>
+										{% endif %}
+
+										{% if product['disk_type'] %}
+											<span data-title = "Ổ cứng">
+												<i class="fas fa-hdd fa-xs" style="color: #45474a;"></i>
+												{{ product['disk_type'] }} {{ product['disk_storage'] }}
+											</span>
+										{% endif %}
+
+										{% if product['cpu'] %}
+											<span data-title = "CPU">
+												<i class="fas fa-microchip fa-xs" style="color: #45474a;"></i>
+												{% if product['cpu'] in ['i3', 'i5', 'i7', 'i9'] %}
+													Intel Core {{ product['cpu'] }}
+												{% elif product['cpu'] in ['R3', 'R5', 'R7', 'R9'] %}
+													AMD Ryzen {{ product['cpu'] }}
+												{% elif product['cpu'] in ['M1', 'M2'] %}
+													Apple {{ product['cpu'] }}
+												{% else %}
+													Intel {{ product['cpu'] }}
+												{% endif %}
+											</span>
+										{% endif %}
+
+										{% if product['ram'] %}
+											<span data-title = "RAM">
+												<i class="fas fa-memory fa-xs" style="color: #45474a;"></i>
+												{{ product['ram'] }} GB
+											</span>
+										{% endif %}
+
+										{% if product['gpu'] %}
+											<span data-title = "Card màn hình">
+												<i class="bi bi-gpu-card" style="color: #45474a;"></i>
+												{{ product['gpu'] }}
+											</span>
+										{% endif %}
+									</div>
+								</div>
+							</div>
+						</a>
+
+					</li>
+					{% endfor %}
+				</ul>
+			{% endif %}	
+
+			<div class="nothing mt-4 {% if listproduct | length != 0 %} hidden {% endif %}"><section class="t-product-list"><section class="flex flex-col items-center pt-6 pb-10"><svg fill="none" height="96" viewBox="0 0 96 96" width="96" xmlns="http://www.w3.org/2000/svg" style="color: rgb(0, 101, 238);"><path clip-rule="evenodd" d="M25.8159 13.065C25.8159 12.666 25.9734 12.285 26.2554 12.0045C26.5359 11.7225 26.9184 11.565 27.3159 11.565H61.1469L78.3159 30.603V54.5325C78.3159 54.5325 78.3699 74.298 72.7554 83.7345C72.4824 84.168 72.0054 84.4305 71.4924 84.4305C65.7519 84.435 31.6704 84.435 22.1424 84.435C21.6174 84.435 21.1299 84.159 20.8584 83.7075C20.5869 83.256 20.5734 82.695 20.8209 82.2315C25.4754 72.1245 25.8159 54.5325 25.8159 54.5325V13.065Z" fill-rule="evenodd" style="fill: currentcolor; opacity: 0.4;"></path> <path clip-rule="evenodd" d="M78.3159 54.5625C78.3159 54.5625 78.3699 74.328 72.7554 83.7645C72.4824 84.198 72.0054 84.4605 71.4924 84.4605C65.7519 84.465 31.6704 84.465 22.1424 84.465C21.6174 84.465 21.1299 84.1875 20.8584 83.736C20.5869 83.286 20.5734 82.725 20.8209 82.26L20.8794 82.131C39.3504 82.9995 66.1734 79.764 69.7059 78.381C73.4799 76.9035 78.2409 62.7255 78.3144 54.7485L78.3159 54.5625Z" fill="currentColor" fill-rule="evenodd"></path> <path clip-rule="evenodd" d="M78.3155 30.603C73.7615 28.8045 68.9405 28.7535 63.992 29.5185C63.533 29.5905 63.0665 29.445 62.729 29.124C62.3915 28.803 62.2235 28.344 62.273 27.882C62.816 22.341 62.2685 16.92 61.1465 11.565C68.4035 16.9515 74.1335 23.2935 78.3155 30.603Z" fill="currentColor" fill-rule="evenodd"></path> <path d="M78.9941 78C87.2784 78 93.9941 71.2843 93.9941 63C93.9941 54.7157 87.2784 48 78.9941 48C70.7099 48 63.9941 54.7157 63.9941 63C63.9941 71.2843 70.7099 78 78.9941 78Z" fill="currentColor"></path> <path clip-rule="evenodd" d="M77.4941 55.5V70.5C77.4941 71.328 78.1661 72 78.9941 72C79.8221 72 80.4941 71.328 80.4941 70.5V55.5C80.4941 54.672 79.8221 54 78.9941 54C78.1661 54 77.4941 54.672 77.4941 55.5Z" fill="#EEFEFB" fill-rule="evenodd"></path> <path clip-rule="evenodd" d="M86.4941 61.5H71.4941C70.6661 61.5 69.9941 62.172 69.9941 63C69.9941 63.828 70.6661 64.5 71.4941 64.5H86.4941C87.3221 64.5 87.9941 63.828 87.9941 63C87.9941 62.172 87.3221 61.5 86.4941 61.5Z" fill="#EEFEFB" fill-rule="evenodd"></path> <path clip-rule="evenodd" d="M25.8145 22.077V43.3455C27.8005 39.741 30.9775 36.9045 34.8325 35.346C35.902 34.914 36.9625 34.485 37.9075 34.1025C38.4745 33.8745 38.845 33.324 38.845 32.712C38.845 32.1015 38.4745 31.551 37.9075 31.3215C36.964 30.9405 35.905 30.513 34.837 30.081C30.979 28.5225 27.802 25.6845 25.8145 22.077Z" fill="#EEFEFB" fill-rule="evenodd"></path> <path clip-rule="evenodd" d="M36.7503 32.2845C37.3173 32.055 37.6893 31.5045 37.6893 30.8925C37.6893 30.282 37.3173 29.7315 36.7503 29.502C35.8068 29.121 34.7478 28.6935 33.6798 28.2615C29.1543 26.433 25.5663 22.845 23.7363 18.3195C23.3028 17.2485 22.8738 16.188 22.4913 15.2415C22.2618 14.6745 21.7113 14.304 21.1008 14.304C20.4888 14.304 19.9383 14.6745 19.7103 15.2415C19.3278 16.185 18.9003 17.244 18.4698 18.312C16.6413 22.836 13.0533 26.4255 8.52931 28.2555C7.45681 28.689 6.39331 29.1195 5.44531 29.502C4.87981 29.7315 4.50781 30.282 4.50781 30.8925C4.50781 31.5045 4.87981 32.055 5.44531 32.283C6.39331 32.667 7.45681 33.0975 8.53081 33.531C13.0548 35.361 16.6428 38.9505 18.4698 43.476C18.9018 44.5425 19.3293 45.6 19.7088 46.5435C19.9383 47.1105 20.4888 47.481 21.1008 47.481C21.7113 47.481 22.2618 47.1105 22.4913 46.5435C22.8723 45.5985 23.3013 44.538 23.7333 43.4685C25.5633 38.9445 29.1513 35.3565 33.6753 33.5265C34.7463 33.0945 35.8053 32.6655 36.7503 32.2845Z" fill="currentColor" fill-rule="evenodd"></path> <path clip-rule="evenodd" d="M52.8879 59.016C53.3379 58.8345 53.6304 58.3995 53.6304 57.915C53.6304 57.4305 53.3379 56.9955 52.8879 56.814C52.8879 56.814 52.8864 56.814 52.8864 56.8125C48.7509 55.1415 45.4704 51.8625 43.7979 47.727C43.7964 47.724 43.7964 47.7225 43.7949 47.7195C43.6134 47.271 43.1784 46.977 42.6939 46.977C42.2094 46.977 41.7744 47.271 41.5929 47.7195V47.721C39.9219 51.8565 36.6429 55.137 32.5059 56.8095C32.5044 56.811 32.5014 56.811 32.4999 56.8125C32.0499 56.994 31.7559 57.4305 31.7559 57.915C31.7559 58.3995 32.0499 58.836 32.4999 59.0175C32.5029 59.019 32.5059 59.0205 32.5089 59.0205C36.6429 60.693 39.9219 63.9735 41.5929 68.109C41.5929 68.1105 41.5929 68.112 41.5944 68.1135C41.7759 68.5605 42.2109 68.8545 42.6939 68.8545C43.1769 68.8545 43.6119 68.562 43.7934 68.1135C43.7949 68.1105 43.7949 68.109 43.7964 68.1075C45.4689 63.9705 48.7479 60.69 52.8849 59.0175C52.8864 59.0175 52.8879 59.016 52.8879 59.016Z" fill="currentColor" fill-rule="evenodd"></path> <path clip-rule="evenodd" d="M51.6208 57.4785C52.0618 57.2985 52.3513 56.8695 52.3513 56.3925C52.3513 55.9155 52.0618 55.4865 51.6193 55.308C51.6193 55.308 51.6193 55.308 51.6178 55.308C47.5438 53.661 44.3113 50.43 42.6643 46.356C42.6628 46.353 42.6628 46.3515 42.6613 46.3485C42.4828 45.906 42.0538 45.6165 41.5768 45.6165C41.0998 45.6165 40.6708 45.906 40.4923 46.3485L40.4908 46.35C38.8453 50.424 35.6143 53.6565 31.5403 55.3035C31.5373 55.305 31.5358 55.3065 31.5328 55.3065C31.0903 55.4865 30.8008 55.9155 30.8008 56.3925C30.8008 56.871 31.0903 57.3 31.5328 57.4785C31.5358 57.48 31.5388 57.4815 31.5418 57.483C35.6158 59.13 38.8453 62.3625 40.4908 66.4365C40.4923 66.438 40.4923 66.438 40.4923 66.4395C40.6708 66.882 41.0998 67.17 41.5768 67.17C42.0523 67.17 42.4813 66.882 42.6598 66.4395C42.6613 66.438 42.6613 66.4365 42.6628 66.4335C44.3098 62.358 47.5408 59.127 51.6163 57.4785H51.6208Z" fill="#EEFEFB" fill-rule="evenodd"></path></svg> <div class="mt-4 px-2 flex flex-col items-center"><span class="block font-semibold text-h5">Không có kết quả</span> <p class="text-md text-center mt-3">
+			Đừng lo, Thế giới Laptop luôn có những sản phẩm tốt nhất cho bạn lựa chọn
+			</p> <a href="/"  class="mt-8"><button class="t-button t-button--md t-button--solid t-button--primary"><!----> Cùng về trang chủ <!----> <!----></button></a></div></section> <!----></section></div>
+		</div>		
+
+	</main>
+ 
+ 
+	
+
+	<div id="loading-overlay">
+		<div class="loading-spinner"></div>
+		<p>Loading...</p>
+	</div>
+
+	<script src="../static/productScript.js"></script>
+</body>
+
+</html>
+

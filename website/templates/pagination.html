@@ -1,0 +1,22 @@
+{% if pagination.current_page > 1 %}
+    <a href="/{{ pagination.table_name }}?page=1&sort={{pagination.current_sort}}" class = "paging-btn" value = '1'>Trang đầu</a>
+    {% if pagination.current_page > 2 %}
+        <a href="/{{ pagination.table_name }}?page={{ pagination.current_page - 1 }}&sort={{pagination.current_sort}}" class = "paging-btn" value = '{{ pagination.current_page - 1 }}'>Trang trước</a>
+    {% endif %}
+{% endif %}
+
+{% for page in range((1 if 1 > pagination.current_page - 1 else pagination.current_page - 1), (pagination.current_page + 2 if pagination.current_page + 2 < pagination.total_pages + 1 else pagination.total_pages + 1)) %}
+    {% if page == pagination.current_page %}
+        <span class="current">{{ page }}</span>
+    {% else %}
+        <a href="/{{ pagination.table_name }}?page={{ page }}&sort={{pagination.current_sort}}" class = "paging-btn" value = '{{ page }}'>{{ page }}</a>
+    {% endif %}
+{% endfor %}
+
+{% if pagination.current_page + 1 < pagination.total_pages %}
+    <a href="/{{ pagination.table_name }}?page={{ pagination.current_page + 1 }}&sort={{pagination.current_sort}}" class = "paging-btn" value = '{{ pagination.current_page + 1 }}'>Trang tiếp theo</a>
+{% endif %}
+
+{% if pagination.current_page < pagination.total_pages %}
+    <a href="/{{ pagination.table_name }}?page={{ pagination.total_pages }}&sort={{pagination.current_sort}}" class = "paging-btn" value = '{{ pagination.total_pages }}'>Trang cuối</a>
+{% endif %}

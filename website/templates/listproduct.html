@@ -1,0 +1,83 @@
+{% for product in listproduct %}
+<li class="item">  
+
+    <a href="/product/{{ product['table_name']}}?id={{ product['id'] }}" target="_blank"> 
+        <div class = "logo">
+            {% if product['shop'] == 'fpt' %}
+                <img src = "https://fptshop.com.vn/mua-laptop-den-fptshop/Content/images/logo-mb.png" alt = "logo" style = "height: 21px;">
+            {% elif product['shop'] == 'pvu' %}
+                <img src = "https://lh3.googleusercontent.com/qOnchEYD7No58bjEQs5pf_05IV-0DmoaCmEFXD007VHs5cn16LZ6PC98IlY3OiBL9UXsEwNzwiVHRrvSDMQ" alt = "logo" style = "height: 10px;">
+            {% elif product['shop'] == 'tpr' %}
+                <img src = "https://media-api-beta.thinkpro.vn/media/core/site-configs/2023/3/16/logo-thinkpro.svg" alt = "logo" style = "height: 21px;">
+            {% else %}
+                <img src = "https://cdn.haitrieu.com/wp-content/uploads/2021/11/Logo-The-Gioi-Di-Dong-MWG.png" alt = "logo" style = "height: 25px;">
+            {% endif %}
+        </div>
+        <div class = "effect">
+            <div class = "item-img">
+                <img src="{{ product['img_link'] }}" style = "transition: all 300ms ease-in-out;" alt = "product image">
+            </div>
+            <h3> {{ product['product_name'] }} </h3>
+            <div class = "product-price">
+                <span class = "product-price-text">Từ</span>
+                <div class = "price"> {{ product['price'] }} </div>
+            </div>
+
+            <div class = "product-config">
+                <div class = "product-config-param">
+                    {% if product['screen'] %}
+                        <span data-title = "Màn hình">
+                            <i class="bi bi-aspect-ratio fa-xs" style="color: #45474a"></i>
+                            {{ product['screen'] }} inch
+                        </span>
+                    {% endif %}
+
+                    {% if product['refresh_rate'] %}
+                        <span data-title = "Tần số quét">
+                            <i class="bi bi-display fa-xs" style="color: #45474a;"></i>
+                            {{ product['refresh_rate'] }} Hz
+                        </span>
+                    {% endif %}
+
+                    {% if product['disk_type'] %}
+                        <span data-title = "Ổ cứng">
+                            <i class="fas fa-hdd fa-xs" style="color: #45474a;"></i>
+                            {{ product['disk_type'] }} {{ product['disk_storage'] }}
+                        </span>
+                    {% endif %}
+
+                    {% if product['cpu'] %}
+                        <span data-title = "CPU">
+                            <i class="fas fa-microchip fa-xs" style="color: #45474a;"></i>
+                            {% if product['cpu'] in ['i3', 'i5', 'i7', 'i9'] %}
+                                Intel Core {{ product['cpu'] }}
+                            {% elif product['cpu'] in ['R3', 'R5', 'R7', 'R9'] %}
+                                AMD Ryzen {{ product['cpu'] }}
+                            {% elif product['cpu'] in ['M1', 'M2'] %}
+                                Apple {{ product['cpu'] }}
+                            {% else %}
+                                Intel {{ product['cpu'] }}
+                            {% endif %}
+                        </span>
+                    {% endif %}
+
+                    {% if product['ram'] %}
+                        <span data-title = "RAM">
+                            <i class="fas fa-memory fa-xs" style="color: #45474a;"></i>
+                            {{ product['ram'] }} GB
+                        </span>
+                    {% endif %}
+
+                    {% if product['gpu'] %}
+                        <span data-title = "Card màn hình">
+                            <i class="bi bi-gpu-card" style="color: #45474a;"></i>
+                            {{ product['gpu'] }}
+                        </span>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </a>
+
+</li>
+{% endfor %}
