@@ -1,6 +1,6 @@
 # Scrape and Extract Data Website
 
-This project is a web scraper that retrieves information about laptops, PCs, screens, and other related products from various websites. It allows users to search products by keywords or filter, and compare the specifications, prices, and other details of different products in order to make informed purchasing decisions. The scraper is built using the Selenium and BeautifulSoup libraries and the website is developed using the Flask framework.
+This project is a web scraper that retrieves information about laptops, PCs, screens, and other related products from various websites and then stored in a MySQL database hosted on PlanetScale. It allows users to search products by keywords or filter, and compare the specifications, prices, and other details of different products in order to make informed purchasing decisions. The scraper is built using the Selenium and BeautifulSoup libraries and the website is developed using the Flask framework.
 
 ## Features
 
@@ -66,5 +66,3 @@ Start the **main.py** file:
 ```
 $ python main.py
 ```
-
-
