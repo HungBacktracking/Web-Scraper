@@ -53,9 +53,9 @@ $ flask run
 
 In flask, default port is 5000.
 
-Open your web browser and go to http://localhost:5000 to access the chatbot interface.
+Open your web browser and go to http://localhost:5000.
 
-Or access the chatbot in your web browser at [thegioilaptop.vercel.app](https://thegioilaptop.vercel.app/Laptop).
+Or access the website in your web browser at [thegioilaptop.vercel.app](https://thegioilaptop.vercel.app/Laptop).
 
 ## Usage of Scraper
 
